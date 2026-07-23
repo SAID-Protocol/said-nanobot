@@ -19,8 +19,10 @@ from nanobot.agent.tools.message import MessageTool
 from nanobot.agent.tools.spawn import SpawnTool
 from nanobot.agent.tools.cron import CronTool
 from nanobot.agent.tools.solana import (
-    GetBalanceTool, VerifyAgentTool, LookupAgentTool, 
-    GetTrustScoreTool, RegisterAgentTool, GetMyIdentityTool
+    GetBalanceTool, VerifyAgentTool,
+    GetTrustScoreTool, DiscoverAgentsTool, GetLeaderboardTool,
+    GetNetworkStatsTool, SubmitFeedbackTool,
+    RegisterAgentTool, GetMyIdentityTool
 )
 from nanobot.agent.subagent import SubagentManager
 from nanobot.session.manager import SessionManager
@@ -109,8 +111,11 @@ class AgentLoop:
         # Solana/SAID tools (always enabled)
         self.tools.register(GetBalanceTool())
         self.tools.register(VerifyAgentTool())
-        self.tools.register(LookupAgentTool())
         self.tools.register(GetTrustScoreTool())
+        self.tools.register(DiscoverAgentsTool())
+        self.tools.register(GetLeaderboardTool())
+        self.tools.register(GetNetworkStatsTool())
+        self.tools.register(SubmitFeedbackTool())
         self.tools.register(RegisterAgentTool())
         self.tools.register(GetMyIdentityTool(workspace=self.workspace))
     
